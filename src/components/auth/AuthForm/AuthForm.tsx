@@ -4,9 +4,9 @@ import styles from "./AuthForm.module.css";
 const AuthForm: React.FC = () => {
 	const [isLogin, setIsLogin] = useState(true);
 
-	function switchAuthModeHandler() {
+	const switchAuthModeHandler = () => {
 		setIsLogin(prevState => !prevState);
-	}
+	};
 
 	return (
 		<section className={styles.auth}>
