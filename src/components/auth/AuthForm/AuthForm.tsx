@@ -4,6 +4,7 @@ import styles from "./AuthForm.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { createUser } from "services/auth.services";
+import { signIn } from "next-auth/react";
 
 const AuthForm: React.FC = () => {
 	const [isLogin, setIsLogin] = useState(true);
@@ -25,15 +26,15 @@ const AuthForm: React.FC = () => {
 		}),
 		onSubmit: async ({ email, password }) => {
 			if (isLogin) {
-				console.log("Login");
+				const result = await signIn("credentials", {
+					redirect: false,
+					email,
+					password,
+				});
 			} else {
 				try {
 					const result = await createUser(email, password);
-
-					console.log(result);
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 			}
 		},
 	});
