@@ -57,7 +57,7 @@ const AuthForm: React.FC = () => {
 						type="password"
 						id="password"
 						required
-						{...authForm.getFieldProps("email")}
+						{...authForm.getFieldProps("password")}
 					/>
 				</div>
 				<div className={styles.actions}>
