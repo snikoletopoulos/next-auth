@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Response as SignupResponse } from "pages/api/auth/signup";
+import { axiosErrorMessage } from "helpers/axios.helpers";
 
 export const createUser = async (email: string, password: string) => {
 	try {
@@ -10,6 +11,10 @@ export const createUser = async (email: string, password: string) => {
 
 		return response.data;
 	} catch (error) {
-		throw new Error("Something went wrong");
+		if (axios.isAxiosError(error)) {
+			throw axiosErrorMessage(error);
+		} else {
+			throw error;
+		}
 	}
 };
