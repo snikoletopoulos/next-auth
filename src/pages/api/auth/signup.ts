@@ -1,7 +1,7 @@
 import type { NextApiHandler } from "next";
 
-import { connectToDb } from "helpers/db";
-import { hashPassword } from "helpers/auth";
+import { connectToDb } from "helpers/db.helpers";
+import { hashPassword } from "helpers/auth.helpers";
 
 export interface Response {
 	message: string;
