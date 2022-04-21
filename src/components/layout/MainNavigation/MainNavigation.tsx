@@ -1,11 +1,18 @@
 import Link from "next/link";
 import styles from "./MainNavigation.module.css";
 
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 const MainNavigation: React.FC = () => {
 	const { data: session, status } = useSession();
 	console.log({ session, status });
+
+	const handleLogOut = () => {
+		signOut({
+			redirect: false,
+		});
+	};
+
 	return (
 		<header className={styles.header}>
 			<Link href="/">
@@ -26,7 +33,7 @@ const MainNavigation: React.FC = () => {
 								<Link href="/profile">Profile</Link>
 							</li>
 							<li>
-								<button>Logout</button>
+								<button onClick={handleLogOut}>Logout</button>
 							</li>
 						</>
 					)}
