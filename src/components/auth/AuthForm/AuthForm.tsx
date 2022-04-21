@@ -61,7 +61,7 @@ const AuthForm: React.FC = () => {
 					/>
 				</div>
 				<div className={styles.actions}>
-					<button>{isLogin ? "Login" : "Create Account"}</button>
+					<button type="submit">{isLogin ? "Login" : "Create Account"}</button>
 					<button
 						type="button"
 						className={styles.toggle}
