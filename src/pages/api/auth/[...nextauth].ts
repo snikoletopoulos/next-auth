@@ -22,7 +22,7 @@ export default NextAuth({
 					placeholder: "Password",
 				},
 			},
-			async authorize(credentials, req) {
+			async authorize(credentials) {
 				if (!credentials) {
 					throw new Error("No credentials");
 				}
