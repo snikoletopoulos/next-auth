@@ -5,7 +5,6 @@ import { useSession, signOut } from "next-auth/react";
 
 const MainNavigation: React.FC = () => {
 	const { data: session, status } = useSession();
-	console.log({ session, status });
 
 	const handleLogOut = () => {
 		signOut({

@@ -19,7 +19,6 @@ export const getServerSideProps = async (
 	context: GetServerSidePropsContext
 ) => {
 	const session = await getSession({ req: context.req });
-	console.log(session);
 
 	if (!session) {
 		return {
