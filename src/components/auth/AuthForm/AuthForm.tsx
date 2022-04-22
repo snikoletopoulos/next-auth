@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./AuthForm.module.css";
+import { useRouter } from "next/router";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -7,6 +8,8 @@ import { createUser } from "services/auth.services";
 import { signIn } from "next-auth/react";
 
 const AuthForm: React.FC = () => {
+	const router = useRouter();
+
 	const [isLogin, setIsLogin] = useState(true);
 
 	const switchAuthModeHandler = () => {
@@ -31,6 +34,10 @@ const AuthForm: React.FC = () => {
 					email,
 					password,
 				});
+
+				if (!result.error) {
+					router.replace("/profile")
+				}
 			} else {
 				try {
 					const result = await createUser(email, password);
