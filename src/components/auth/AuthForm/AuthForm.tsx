@@ -35,7 +35,7 @@ const AuthForm: React.FC = () => {
 					password,
 				});
 
-				if (!result.error) {
+				if (result && !("error" in result)) {
 					router.replace("/profile");
 				}
 			} else {
